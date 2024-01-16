@@ -1,3 +1,5 @@
+const User = require("../models/user");
+
 const home = async (req, res) => {
   try {
     res.status(200).send("Hello From the Home Page");
@@ -8,7 +10,22 @@ const home = async (req, res) => {
 
 const register = async (req, res) => {
   try {
-    res.status(200).send("Hello From the Register Page");
+    // console.log(req.body);
+    const { username, email, phone, password } = req.body;
+
+    const userExist = await User.findOne({ email });
+
+    if (userExist) {
+      return res.status(200).json({ message: "Email is already exist" });
+    }
+
+    const userCreated = await User.create({ username, email, phone, password });
+
+    res.status(200).json({
+      message: "Registration Successfull",
+      token: await userCreated.generateToken(),
+      userId: userCreated._id.toString(),
+    });
   } catch (error) {
     console.log(error);
   }
@@ -16,9 +33,27 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    res.status(200).send("Hello From the Login Page");
+    const { email, password } = req.body;
+
+    const userExist = await User.findOne({ email });
+
+    if (!userExist) {
+      return res.status(400).json({ message: "Invalid Credentials" });
+    }
+
+    const user = await userExist.comparePassword(password);
+
+    if (user) {
+      res.status(200).json({
+        message: "Login Successfull",
+        token: await userExist.generateToken(),
+        userId: userExist._id.toString(),
+      });
+    } else {
+      res.status(401).json({ message: "Invalid Credentials" });
+    }
   } catch (error) {
-    console.log(error);
+    res.status(500).json("Internal server error");
   }
 };
 
