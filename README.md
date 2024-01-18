@@ -12,3 +12,5 @@ Welcome to the repository for YourWebsiteName, a dynamic website featuring both 
 * Frontend: React.js, Redux
 * Backend: Node.js, Express.js, MongoDB
 * Authentication: JWT
+
+#### "The complete codebase will soon be available on GitHub, providing transparency, collaboration, and the opportunity for others to benefit"
