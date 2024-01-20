@@ -1,6 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+
+const defaultContactFormData = {
+  username: "",
+  email: "",
+  message: "",
+};
 
 export default function Contact() {
+  const [contact, setContact] = useState(defaultContactFormData);
+
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setContact({
+      ...contact,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // console.log(contact);
+
+    try {
+      const response = fetch("http://localhost:3000/api/form/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contact),
+      });
+
+      if (response.ok) {
+        setContact(defaultContactFormData);
+        const data = (await response).json();
+        console.log(data);
+        alert("Message has been sent...");
+      }
+    } catch (error) {
+      console.log(`Contact Form Page Error : ${error}`);
+    }
+  };
+
   return (
     <>
       <section className="section-contact">
@@ -15,7 +57,7 @@ export default function Contact() {
 
           {/* contact form content actual  */}
           <section className="section-form">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="username">username</label>
                 <input
@@ -23,6 +65,8 @@ export default function Contact() {
                   name="username"
                   id="username"
                   autoComplete="off"
+                  value={contact.username}
+                  onChange={handleInput}
                   required
                 />
               </div>
@@ -34,6 +78,8 @@ export default function Contact() {
                   name="email"
                   id="email"
                   autoComplete="off"
+                  value={contact.email}
+                  onChange={handleInput}
                   required
                 />
               </div>
@@ -44,6 +90,8 @@ export default function Contact() {
                   name="message"
                   id="message"
                   autoComplete="off"
+                  value={contact.message}
+                  onChange={handleInput}
                   required
                   cols="30"
                   rows="6"

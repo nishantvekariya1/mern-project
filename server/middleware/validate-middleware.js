@@ -9,14 +9,13 @@ const validate = (schema) => async (req, res, next) => {
     const message = "Fill the input details.";
     const extraDetails = err.errors[0].message;
     // console.log(extraDetails);
-    // res.status(400).json({msg : "validation error"});
+    // res.status(400).json({ msg: "validation error" });
 
     const error = {
       status,
       message,
       extraDetails,
     };
-    // console.log(error);
     next(error);
   }
 };

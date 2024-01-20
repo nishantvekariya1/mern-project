@@ -13,12 +13,12 @@ const signUpSchema = z.object({
     .min(3, { message: "Email must be atleast 3 characters" })
     .max(255, { message: "Email must be not more than 255 charcters" }),
   phone: z
-    .number({ required_error: "Phone is required" })
+    .string({ required_error: "Phone is required" })
     .min(10, { message: "Phone must be atleast 10 numbers" })
     .max(20, { message: "Phone must be not more than 20 numbers" }),
   password: z
     .string({ required_error: "Password is required" })
-    .min(7, { message: "Password must be atleast 3 characters" })
+    .min(7, { message: "Password must be atleast 7 characters" })
     .max(255, { message: "Password must be not more than 255 charcters" }),
 });
 
@@ -31,7 +31,7 @@ const signInSchema = z.object({
     .max(255, { message: "Email must be not more than 255 charcters" }),
   password: z
     .string({ required_error: "Password is required" })
-    .min(7, { message: "Password must be atleast 3 characters" })
+    .min(7, { message: "Password must be atleast 7 characters" })
     .max(255, { message: "Password must be not more than 255 charcters" }),
 });
 
