@@ -437,3 +437,122 @@ button {
 }
 
 /***** End Error Section *****/
+
+/***** Start Admin User Table Section *****/
+
+.admin-users-section {
+  padding: 20px;
+}
+
+.admin-users {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+  font-size: 17px;
+}
+
+th {
+  background-color: #918e8e;
+}
+
+.container {
+  max-width: 70vw;
+  margin: 0 auto;
+}
+
+/***** End Admin User Table Section *****/
+
+/***** Start Admin Update form Section *****/
+.section-update {
+  & .contact-content {
+    padding: 0;
+
+    & h1 {
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  & .container {
+    padding-top: 3.2rem;
+  }
+
+  & .update-img {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    & img {
+      width: 80%;
+      height: auto;
+    }
+  }
+
+  & .update-form {
+    & form {
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+    }
+
+    & label {
+      display: block;
+      margin-bottom: 1.2rem;
+      text-transform: capitalize;
+    }
+
+    & input,
+    textarea {
+      width: 80%;
+      padding: 0.4rem 0.6rem;
+    }
+
+    & button {
+      margin-top: 20px;
+    }
+  }
+}
+
+/***** End Admin Update Section *****/
+
+/***** Start Admin Navbar Section *****/
+.admin-container {
+  margin-top: 40px;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.admin-container nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.admin-container nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.admin-container nav ul li:last-child {
+  margin-right: 0;
+}
+
+.admin-container nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.admin-container nav ul li a:hover {
+  color: var(--btn-color);
+}
+
+/***** End Admin Navbar Section *****/
