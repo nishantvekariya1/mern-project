@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -47,10 +48,12 @@ export default function Register() {
           password: "",
         });
         storeTokenInLS(res_data.token);
-        alert("Registration Completed...");
+        toast.success("Registration Completed...");
         navigate("/");
       } else {
-        alert(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+        toast.error(
+          res_data.extraDetails ? res_data.extraDetails : res_data.message
+        );
       }
     } catch (error) {
       console.log(`Regitration Error : ${error}`);

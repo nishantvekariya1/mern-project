@@ -556,3 +556,12 @@ th {
 }
 
 /***** End Admin Navbar Section *****/
+
+/***** End Tostify Section *****/
+
+.toastBody {
+  font-family: "Atlas Grotesk Web", Arial, Helvetica, sans-serif;
+  font-size: 1.7rem;
+}
+
+/***** End Tostify Section *****/

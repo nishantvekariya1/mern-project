@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 export default function AdminContacts() {
   const [contactData, setContactData] = useState([]);
@@ -38,9 +39,9 @@ export default function AdminContacts() {
       );
       if (response.ok) {
         getContactsData();
-        alert("deleted successfully");
+        toast.success("Deleted Successfully");
       } else {
-        alert("Not Deleted ");
+        toast.error("Not Deleted ");
       }
     } catch (error) {
       console.log(error);

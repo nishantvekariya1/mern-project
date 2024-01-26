@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 export default function AdminUpdate() {
   const [data, setData] = useState({
@@ -64,9 +65,9 @@ export default function AdminUpdate() {
         }
       );
       if (response.ok) {
-        alert("User updated successfully!");
+        toast.success("User updated successfully!");
       } else {
-        alert("Failed to update user.");
+        toast.error("Failed to update user.");
       }
     } catch (error) {
       console.log(error);
