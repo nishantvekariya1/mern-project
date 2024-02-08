@@ -13,7 +13,7 @@ export default function Contact() {
 
   const [userData, setUserData] = useState(true);
 
-  const { user } = useAuth();
+  const { user, API } = useAuth();
 
   if (userData && user) {
     setContact({
@@ -39,7 +39,7 @@ export default function Contact() {
     // console.log(contact);
 
     try {
-      const response = fetch("http://localhost:3000/api/form/contact", {
+      const response = fetch(`${API}/api/form/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

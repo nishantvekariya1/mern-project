@@ -12,19 +12,16 @@ export default function AdminUpdate() {
 
   const params = useParams();
   // console.log("params single user : ", params);
-  const { authorizationToken } = useAuth();
+  const { authorizationToken, API } = useAuth();
 
   const getSingleUserData = async () => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/admin/users/${params.userId}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: authorizationToken,
-          },
-        }
-      );
+      const response = await fetch(`${API}/api/admin/users/${params.userId}`, {
+        method: "GET",
+        headers: {
+          Authorization: authorizationToken,
+        },
+      });
       // console.log("response :", response);
       const data = await response.json();
       setData(data);
@@ -54,7 +51,7 @@ export default function AdminUpdate() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:3000/api/admin/users/update/${params.userId}`,
+        `${API}/api/admin/users/update/${params.userId}`,
         {
           method: "PATCH",
           headers: {

@@ -5,13 +5,15 @@ import { toast } from "react-toastify";
 
 export default function Register() {
   const navigate = useNavigate();
-  const { storeTokenInLS } = useAuth();
+  const { storeTokenInLS, API } = useAuth();
   const [user, setUser] = useState({
     username: "",
     email: "",
     phone: "",
     password: "",
   });
+
+  const URL = `${API}/api/auth/register`;
 
   const handleInput = (e) => {
     // console.log(e);
@@ -29,7 +31,7 @@ export default function Register() {
     // console.log(user);
 
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch(URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

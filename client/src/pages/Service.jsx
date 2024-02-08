@@ -3,7 +3,6 @@ import { useAuth } from "../store/auth";
 
 export default function Service() {
   const { services } = useAuth();
-  console.log(services);
   return (
     <section className="section-services">
       <div className="container">
