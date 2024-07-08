@@ -10,7 +10,7 @@ export default function Navbar() {
       <header>
         <div className="nav-container">
           <div className="logo">
-            <span>Nishant</span>
+            <span>CRUD - Mern Website</span>
           </div>
 
           <nav>
