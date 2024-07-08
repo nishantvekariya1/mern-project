@@ -68,7 +68,8 @@ This project is a website built using the MERN stack (MongoDB, Express.js, React
     ```env
     # In the client directory
     VITE_APP_URI_API = your_backend_base_uri
-    
+
+    # In the server directory
     MONGO_URI=your_mongodb_uri
     JWT_SECRET_KEY=your_jwt_secret
     PORT=_write_port_number_here
